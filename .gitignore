@@ -1,0 +1,45 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Expo / React Native
+android/
+ios/
+android/app/build/
+*.keystore
+
+# Python
+venv/
+__pycache__/
+*.py[cod]
+env/
+ENV/
+venv.bak/
+
+# Back-end envs and secrets
+backend/.env
+backend/.venv
+backend/__pycache__/
+
+# Mobile build output
+app/build/
+build/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+.gradle/
+
+# Logs
+*.log
+
+# TypeScript
+dist/
