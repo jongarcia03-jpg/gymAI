@@ -1,4 +1,4 @@
-fastapi
+﻿fastapi
 uvicorn[standard]
 sqlmodel
 pydantic
@@ -7,3 +7,5 @@ passlib[bcrypt]
 python-multipart
 PyJWT
 httpx
+python-jose[cryptography]
+
