@@ -1,6 +1,7 @@
 from sqlmodel import Session, select
 from .db import engine
 from .models import User, Exercise, Routine, RoutineExercise
+from .services.auth import hash_password
 
 
 def seed():
@@ -8,7 +9,8 @@ def seed():
         # Crear usuario de prueba si no existe
         user = session.exec(select(User).where(User.email == "dev@local" )).first()
         if not user:
-            user = User(email="dev@local", password_hash="dev")
+            hashed = hash_password("dev")
+            user = User(email="dev@local", password_hash=hashed)
             session.add(user)
             session.commit()
             session.refresh(user)

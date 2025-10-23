@@ -1,15 +1,15 @@
-from passlib.context import CryptContext
 from datetime import datetime, timedelta
 import jwt
 from .config import settings
+import hashlib
 
-pwd_ctx = CryptContext(schemes=["bcrypt"], deprecated="auto")
+def hash_password(password: str):
+    """Hash the password using SHA256."""
+    return hashlib.sha256(password.encode()).hexdigest()
 
-def hash_password(pw: str):
-    return pwd_ctx.hash(pw)
-
-def verify_password(pw: str, pw_hash: str):
-    return pwd_ctx.verify(pw, pw_hash)
+def verify_password(plain: str, hashed: str):
+    """Verify a password against its hash."""
+    return hash_password(plain) == hashed
 
 def create_token(user_id: int):
     exp = datetime.utcnow() + timedelta(days=7)
